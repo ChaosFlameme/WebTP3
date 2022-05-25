@@ -29,6 +29,10 @@ function ajouter(){
          ) {
                return
         }
+
+    if(taskTd.textContent=="BOT_RUN"){
+        activate_bot();
+    }
     
     //const table = document.querySelector('table')
     newItem.append(taskTd, dateTd, categorieTd)
