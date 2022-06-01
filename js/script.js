@@ -1,24 +1,25 @@
 var newCommandForm = document.forms.newTaskF;
 
-function load() {
-    var jsData=JSON.parse(data)
-    alert(jsData[0].data)
-}
+function createTask(jsData){
+    //Initialize elements
+    const newItem = document.createElement('tr')
+    const numberTd=document.createElement('td')
+    const taskTitleTd = document.createElement('td')
+    const statusTd = document.createElement('td')
+    numberTd.textContent=jsData["id"]
+    taskTitleTd.textContent=jsData["title"]
+    statusTd.textContent=jsData["completed"]
+    console.log(statusTd.innerHTML)
 
-function loadJSON(callback){
-    var xobj=new XMLHttpRequest();
-    xobj.overrideMimeType("application/json")
-    xobj.open('GET','../js/Tasks.json',true)
-    xobj.onreadystatechange=function(){
-        if (xobj.readyState == 4 && xobj.status == "200") {
-
-            // .open will NOT return a value but simply returns undefined in async mode so use a callback
-            callback(xobj.responseText);
-            
-        }
+    newItem.append(numberTd,taskTitleTd,statusTd)
+    if(statusTd.innerHTML=="true"){
+        newItem.style.backgroundColor="green"
     }
-    xobj.send(null)
 
+    /* le premier élément dans le document qui contient la classe "datatable" est retourné*/
+    const table = document.querySelector('.datatable tbody')
+    console.log(table)
+    table.appendChild(newItem)
 }
 
 function ajouter() {
