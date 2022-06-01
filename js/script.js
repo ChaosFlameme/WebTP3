@@ -1,35 +1,5 @@
 var newCommandForm = document.forms.newTaskF;
 
-function readJSON(){
-    fetch("../Tasks.json")
-    .then(Response=>Response.json())
-    .then(data=>{
-        console.log(data)
-    })
-}
-
-function createTask(jsData){
-    //Initialize elements
-    const newItem = document.createElement('tr')
-    const numberTd=document.createElement('td')
-    const taskTitleTd = document.createElement('td')
-    const statusTd = document.createElement('td')
-    numberTd.textContent=jsData["id"]
-    taskTitleTd.textContent=jsData["title"]
-    statusTd.textContent=jsData["completed"]
-    console.log(statusTd.innerHTML)
-
-    newItem.append(numberTd,taskTitleTd,statusTd)
-    if(statusTd.innerHTML=="true"){
-        newItem.style.backgroundColor="green"
-    }
-
-    /* le premier élément dans le document qui contient la classe "datatable" est retourné*/
-    const table = document.querySelector('.datatable tbody')
-    console.log(table)
-    table.appendChild(newItem)
-}
-
 function ajouter() {
     //Vérifier que la récupération se fait bien !)
     console.log(document.forms.newTaskF.tache.value);

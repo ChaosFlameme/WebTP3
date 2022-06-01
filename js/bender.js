@@ -43,6 +43,8 @@ function activate_bot(){
     }
 }
 
+
+
 function get_bot_action(query){
     switch(query.substring(4)){
         case "CREATE":
