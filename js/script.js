@@ -1,13 +1,5 @@
 var newCommandForm = document.forms.newTaskF;
 
-function readJSON(){
-    fetch("../Tasks.json")
-    .then(Response=>Response.json())
-    .then(data=>{
-        console.log(data)
-    })
-}
-
 function createTask(jsData){
     //Initialize elements
     const newItem = document.createElement('tr')
@@ -57,10 +49,6 @@ function ajouter() {
         !document.newTaskF.categorie.checkValidity()
     ) {
         return
-    }
-
-    if (taskTd.textContent == "BOT_RUN") {
-        activate_bot();
     }
 
     //const table = document.querySelector('table')
